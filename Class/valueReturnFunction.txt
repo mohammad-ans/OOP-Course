@@ -1,0 +1,168 @@
+Examples of cmath library functions
+
+int abs(int number)
+{
+if (number < 0)
+number = -number;
+return number;
+}
+
+
+double u = 2.5;
+double v = 3.0;
+double x, y;
+x = pow(u, v); //Line 1
+y = pow(2.0, 3.2) + 5.1; //Line 2
+cout << u << " to the power of 7 = " << pow(u, 7) << endl;
+
+double larger(double x, double y)
+{
+if (x >= y)
+return x;
+return y;
+}
+
+double compareThree(double x, double y, double z)
+{
+return larger(x, larger(y, z));
+}
+
+double one = 13.00;
+double two = 36.53;
+double maxNum;
+cout << "The larger of 5 and 6 is " << larger(5, 6)
+<< endl; //Line 1
+cout << "The larger of " << one << " and " << two
+<< " is " << larger(one, two) << endl; //Line 2
+cout << "The larger of " << one << " and 29 is "
+<< larger(one, 29) << endl; //Line 3
+maxNum = larger(38.45, 56.78);
+
+
+#include <iostream>
+using namespace std;
+double larger(double x, double y);
+double compareThree(double x, double y, double z);
+int main()
+{
+double one, two; //Line 1
+cout << "Line 2: The larger of 5 and 10 is "
+<< larger(5, 10) << endl; //Line 2
+cout << "Line 3: Enter two numbers: "; //Line 3
+cin >> one >> two; //Line 4
+cout << endl; //Line 5
+cout << "Line 6: The larger of " << one
+<< " and " << two << " is "
+<< larger(one, two) << endl; //Line 6
+332 | Chapter 6: User-Defined Functions I
+6
+cout << "Line 7: The largest of 43.48, 34.00, "
+<< "and 12.65 is "
+<< compareThree(43.48, 34.00, 12.65)
+<< endl; //Line 7
+return 0;
+}
+double larger(double x, double y)
+{
+double max;
+if (x >= y)
+max = x;
+else
+max = y;
+return max;
+}
+double compareThree (double x, double y, double z)
+{
+return larger(x, larger(y, z));
+}
+
+
+multiple return values
+
+
+#include <iostream>
+using namespace std;
+int funcRet1();
+int funcRet2(int z);
+int main()
+{
+int num = 4;
+cout << "Line 1: The value returned by funcRet1: "
+<< funcRet1() << endl; // Line 1
+334 | Chapter 6: User-Defined Functions I
+cout << "Line 2: The value returned by funcRet2: "
+<< funcRet2(num) << endl; // Line 2
+return 0;
+}
+int funcRet1()
+{
+int x = 45;
+return 23, x; //only the value of x is returned
+}
+int funcRet2(int z)
+{
+int a = 2;
+int b = 3;
+return 2 * a + b, z + b; //only the value of z + b is returned
+}
+
+
+
+Reference Parameters exmple
+
+#include <iostream>
+using namespace std;
+void addFirst(int& first, int& second);
+void doubleFirst(int one, int two);
+void squareFirst(int& ref, int val);
+int main()
+{
+int num = 5;
+cout << "Line 1: Inside main: num = " << num
+<< endl; //Line 1
+addFirst(num, num); //Line 2
+cout << "Line 3: Inside main after addFirst:"
+<< " num = " << num << endl; //Line 3
+doubleFirst(num, num); //Line 4
+cout << "Line 5: Inside main after "
+<< "doubleFirst: num = " << num << endl; //Line 5
+squareFirst(num, num); //Line 6
+cout << "Line 7: Inside main after "
+<< "squareFirst: num = " << num << endl; //Line 7
+return 0;
+}
+void addFirst(int& first, int& second)
+{
+cout << "Line 8: Inside addFirst: first = "
+<< first << ", second = " << second << endl; //Line 8
+first = first + 2; //Line 9
+cout << "Line 10: Inside addFirst: first = "
+<< first << ", second = " << second << endl; //Line 10
+Value and Reference Parameters and Memory Allocation | 379
+second = second * 2; //Line 11
+cout << "Line 12: Inside addFirst: first = "
+<< first << ", second = " << second << endl; //Line 12
+}
+void doubleFirst(int one, int two)
+{
+cout << "Line 13: Inside doubleFirst: one = "
+<< one << ", two = " << two << endl; //Line 13
+one = one * 2; //Line 14
+cout << "Line 15: Inside doubleFirst: one = "
+<< one << ", two = " << two << endl; //Line 15
+two = two + 2; //Line 16
+cout << "Line 17: Inside doubleFirst: one = "
+<< one << ", two = " << two << endl; //Line 17
+}
+void squareFirst(int& ref, int val)
+{
+cout << "Line 18: Inside squareFirst: ref = "
+<< ref << ", val = " << val << endl; //Line 18
+ref = ref * ref; //Line 19
+cout << "Line 20: Inside squareFirst: ref = "
+<< ref << ", val = " << val << endl; //Line 20
+val = val + 2; //Line 21
+cout << "Line 22: Inside squareFirst: ref = "
+<< ref << ", val = " << val << endl; //Line 22
+}
+
